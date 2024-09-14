@@ -7,12 +7,8 @@ import { openai } from "@ai-sdk/openai";
 import { BotCard, BotMessage } from "@/components/llm/message";
 import { Loader2 } from "lucide-react";
 import { z } from "zod";
-import { Price } from "@/components/llm/price";
-import { PriceSkeleton } from "@/components/llm/price-skeleton";
 import dotenv from "dotenv";
-import { StatsSkeleton } from "@/components/llm/stats-skeleton";
 import { sleep } from "@/lib/utils";
-import { Stats } from "@/components/llm/stats";
 import { graph } from "@/lib/langgraph/weatherTool";
 dotenv.config();
 
@@ -91,6 +87,8 @@ export const sendMessage = async (
 							},
 						],
 					});
+
+					console.log("result", result);
 					const weatherResult = result.messages[result.messages.length - 1].content;
 
 					// Simulate API delay
